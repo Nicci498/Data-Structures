@@ -14,7 +14,6 @@ return elements in Last In First Out order.
 
 # class Stack:
 #     def __init__(self):
-#         self.size = 0
 #         self.storage = []
 
 #     def __len__(self):
@@ -28,23 +27,22 @@ return elements in Last In First Out order.
 #             return None
 #         else:
 #             print(self.storage)
-#             self.storage.pop()
+#             return self.storage.pop()
 
 #LL
 class Stack:
     def __init__(self):
-        self.size = 0
         self.storage = LinkedList()
 
     def __len__(self):
         return len(self.storage)
 
     def push(self, value):
-        self.storage.add_to_end(value)
+        self.storage.add_to_top(value)
 
     def pop(self):
         if len(self.storage) > 0:
-            return self.storage.remove_from_end()  
+            return self.storage.remove_from_top()  
 
 class Node:
     def __init__(self, value=None, next_node=None):
@@ -71,7 +69,7 @@ class LinkedList:
     def __len__(self):
         return self.length
 
-    def add_to_end(self, value):
+    def add_to_top(self, value):
         new_node = Node(value)
         if not self.head and not self.tail:
             self.head = new_node
@@ -82,7 +80,7 @@ class LinkedList:
             self.tail = new_node
             self.length += 1
 
-    def remove_from_end(self):
+    def remove_from_top(self):
         if self.length > 0:
             current = self.head
             previous = None
