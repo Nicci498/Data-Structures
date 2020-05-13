@@ -48,7 +48,22 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle 
     the old head node's previous pointer accordingly."""
     def add_to_head(self, value):
-        pass
+        # What are we doing either way?
+        # wrap val in a node and add to length
+        new = ListNode(value)
+        self.length += 1
+        if not self.head and not self.tail:
+            # set new node to head and tail
+            self.head = new
+            self.tail = new
+        else:
+            # set the new nodes next pointer to the old head
+            new.next = self.head
+            # set the old head's prev pointer to new node
+            self.head.prev = new
+            # update the head to the new node
+            self.head = new
+        
 
     """Removes the List's current head node, making the
     current head's next node the new head of the List.
@@ -60,7 +75,16 @@ class DoublyLinkedList:
     as the new tail of the list. Don't forget to handle 
     the old tail node's next pointer accordingly."""
     def add_to_tail(self, value):
-        pass
+        new = ListNode(value)
+        self.length += 1
+        if self.length > 0:            
+            # set the old tails pointer to new node
+            # new is already set to none
+            self.tail.next = new
+            # set new's prev to old tail
+            new.prev = self.tail
+            # update the tail to equal new
+            self.tail = new
 
     """Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
